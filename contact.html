@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — ZenYoTech</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">ZenYoTech</a>
+      <button id="menuToggle3" class="menu-toggle" aria-label="Toggle navigation">☰</button>
+      <nav id="mainNav3" class="nav">
+        <a href="index.html">Accueil</a>
+        <a href="about.html">À propos</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card contact-card">
+      <h1>Contact</h1>
+      <p class="lead">Une question, une proposition de collaboration ou un retour ? Écrivez-nous.</p>
+
+      <form class="contact-form" action="#" method="post" onsubmit="alert('Formulaire de démonstration — Configurez un endpoint serveur pour envoyer les messages.'); return false;">
+        <label for="name">Nom</label>
+        <input id="name" name="name" type="text" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+
+        <button type="submit" class="btn">Envoyer</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <strong>ZenYoTech</strong></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
