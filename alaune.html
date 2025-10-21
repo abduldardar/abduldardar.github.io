@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À la Une - IA Générative & LLM</title>
+  <style>
+    /* ---- Style zen écologique ---- */
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 2em;
+      background: #f4f8f5;
+      color: #222;
+      line-height: 1.7;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2em;
+      padding-bottom: 1em;
+      border-bottom: 2px solid #c5e1b5;
+    }
+    h1 {
+      font-size: 2em;
+      color: #2e7d32;
+    }
+    h2 {
+      color: #33691e;
+      border-left: 4px solid #a5d6a7;
+      padding-left: 10px;
+    }
+    article {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      padding: 1.5em;
+      margin-bottom: 2em;
+      transition: transform 0.2s ease;
+    }
+    article:hover {
+      transform: scale(1.02);
+    }
+    .date {
+      color: #558b2f;
+      font-size: 0.9em;
+      margin-bottom: 0.5em;
+    }
+    a {
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      border-top: 1px solid #c5e1b5;
+      padding-top: 1em;
+      margin-top: 2em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>À la Une — Innovations en IA Générative</h1>
+    <p>Une sélection d’analyses récentes sur les progrès des modèles de langage (LLM), entre avancées technologiques et respect environnemental.</p>
+  </header>
+
+  <!-- Article 1 -->
+  <article>
+    <h2>Anthropic dévoile Claude Haiku 4.5 : rapidité et sobriété énergétique</h2>
+    <p class="date">15 octobre 2025</p>
+    <p>
+      Le modèle <strong>Claude Haiku 4.5</strong> d’Anthropic se distingue par une optimisation fine de ses performances, conjuguant vitesse et réduction de l’empreinte carbone. 
+      Conçu comme une version allégée du modèle Claude 4.1, il offre une génération de texte rapide, précise et économe en ressources.
+      Les chercheurs d’Anthropic ont retravaillé l’architecture pour réduire la redondance computationnelle et implémenter un routage adaptatif 
+      des requêtes selon leur complexité linguistique. Ce mécanisme « attention-skip » permet de traiter les tâches simples avec moins de couches actives, 
+      diminuant ainsi la consommation énergétique moyenne par requête de près de 20 %.  
+      Le modèle est déjà utilisé dans des applications éducatives et de rédaction professionnelle, 
+      démontrant qu’un LLM performant peut aussi être plus durable.  
+      <br><br>
+      <a href="https://www.anthropic.com/news/claude-4-5" target="_blank">→ Lire l’article source</a>
+    </p>
+  </article>
+
+  <!-- Article 2 -->
+  <article>
+    <h2>Google Research publie VaultGemma : l’apprentissage privé devient réalité</h2>
+    <p class="date">25 septembre 2025</p>
+    <p>
+      <strong>VaultGemma</strong> marque un tournant dans la formation responsable des grands modèles de langage. 
+      Google Research introduit ici une approche combinant <em>confidentialité différentielle</em> et efficacité de calcul. 
+      Le modèle est entraîné pour apprendre sans stocker ni exposer de données sensibles, 
+      une avancée majeure pour la conformité réglementaire et la confiance du public dans l’IA.  
+      L’équipe a notamment publié les résultats d’un entraînement sur corpus mixte anonymisé, 
+      montrant que les performances de VaultGemma rivalisent avec des modèles classiques tout en réduisant les risques de fuite d’informations.
+      Cette approche pave la voie à une IA plus éthique et respectueuse de la vie privée.  
+      <br><br>
+      <a href="https://ai.googleblog.com/" target="_blank">→ Lire l’article source</a>
+    </p>
+  </article>
+
+  <!-- Article 3 -->
+  <article>
+    <h2>Meta affine son LLM open source Llama 4 Scout avec un focus écologique</h2>
+    <p class="date">10 octobre 2025</p>
+    <p>
+      Dans un effort de transparence et de durabilité, <strong>Meta</strong> a publié la version expérimentale de <em>Llama 4 Scout</em>, 
+      un modèle optimisé pour fonctionner sur des serveurs basse consommation. 
+      Les ingénieurs ont mis en place un système de <em>quantification dynamique</em> qui réduit la taille du modèle 
+      tout en maintenant une qualité de texte exceptionnelle.  
+      Meta communique pour la première fois une estimation publique de l’empreinte énergétique du pré-entraînement : 
+      environ 30 % inférieure à celle de Llama 3. Les équipes affirment vouloir généraliser ces protocoles à toutes leurs futures versions open source, 
+      démontrant qu’ouverture et écologie peuvent aller de pair dans la recherche sur les LLM.  
+      <br><br>
+      <a href="https://ai.meta.com/blog/" target="_blank">→ Lire l’article source</a>
+    </p>
+  </article>
+
+  <!-- Article 4 -->
+  <article>
+    <h2>OpenAI expérimente une gestion énergétique adaptative pour GPT-5</h2>
+    <p class="date">5 octobre 2025</p>
+    <p>
+      Dans une démarche inédite, <strong>OpenAI</strong> teste un système de gestion adaptative de la consommation électrique 
+      au sein de ses clusters d’entraînement pour <em>GPT-5</em>. 
+      L’objectif : allouer dynamiquement les ressources GPU en fonction du type de données traitées et de la densité du calcul.  
+      Ce projet pilote, mené en collaboration avec des chercheurs du MIT, a permis de réduire de 15 % la dépense énergétique moyenne 
+      sur un jeu d’expérimentations internes sans perte de qualité générative. 
+      Si ce type de technologie se généralise, il pourrait faire école dans toute l’industrie de l’IA, 
+      particulièrement à un moment où les coûts écologiques des modèles géants sont sous surveillance.  
+      <br><br>
+      <a href="https://openai.com/research" target="_blank">→ Lire l’article source</a>
+    </p>
+  </article>
+
+  <!-- Article 5 -->
+  <article>
+    <h2>Stanford et Hugging Face lancent EcoEval : un benchmark vert pour LLM</h2>
+    <p class="date">1er septembre 2025</p>
+    <p>
+      Le consortium formé par <strong>Stanford University</strong> et <strong>Hugging Face</strong> 
+      a dévoilé <em>EcoEval</em>, le premier benchmark open source dédié à la mesure de la durabilité des modèles de langage.  
+      Contrairement aux évaluations classiques axées sur la précision ou la créativité, EcoEval introduit trois métriques : 
+      la consommation énergétique, la quantité d’eau utilisée pour le refroidissement, 
+      et l’efficacité calculatoire par jeton généré.  
+      L’initiative vise à sensibiliser les laboratoires d’IA et à encourager une compétition responsable, 
+      où l’efficacité énergétique devient un critère de performance. 
+      Plusieurs entreprises, dont Anthropic et Cohere, ont déjà annoncé leur intention d’adopter ce standard pour leurs prochains modèles.  
+      <br><br>
+      <a href="https://huggingface.co/blog" target="_blank">→ Lire l’article source</a>
+    </p>
+  </article>
+
+  <footer>
+    © 2025 — Rédaction IA Générative & Environnement | Journalisme Tech Zen
+  </footer>
+</body>
+</html>
