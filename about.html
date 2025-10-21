@@ -1,41 +1,166 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>À propos — ZenYoTech</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tech Zen Éco — Actualités LLM (page journaliste)</title>
+<meta name="description" content="Page d'accueil : analyses journalistiques récentes sur les LLM avec focus écologique et technique." />
+<style>
+  /* Style minimal, clair, sans-serif, max-width 900px — ambiance zen écologique */
+  :root{
+    --maxw:900px;
+    --pad:20px;
+    --muted:#6b7280;
+    --leaf:#2f855a;
+    --bg1:linear-gradient(180deg,#fbfdff,#f7fbf9);
+    --card:#ffffff;
+    --radius:12px;
+    --shadow: 0 8px 24px rgba(17,24,39,0.06);
+    font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:var(--bg1);color:#0f172a;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:28px;}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;padding:8px 0;background:transparent;backdrop-filter: blur(6px);z-index:5}
+  .brand{font-weight:700;font-size:1.2rem;display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+  .brand .leaf{font-size:1.05rem}
+  nav{display:flex;gap:14px;align-items:center}
+  nav a{color:inherit;text-decoration:none;padding:8px;border-radius:8px;font-size:0.95rem}
+  .menu-btn{display:none;background:none;border:0;font-size:1.4rem}
+  h1{margin:8px 0 6px;font-size:1.6rem}
+  .lead{color:var(--muted);margin-bottom:18px}
+  .articles{display:grid;gap:18px}
+  article.card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(15,23,42,0.03)}
+  article.card h2{margin:0 0 8px;font-size:1.05rem}
+  article.card time{display:block;font-size:0.85rem;color:var(--muted);margin-bottom:8px}
+  .summary{color:#111827;text-align:justify;line-height:1.7}
+  .source{font-size:0.9rem;color:var(--muted);margin-top:12px}
+  footer{margin-top:28px;color:var(--muted);padding:18px 0;border-top:1px solid rgba(15,23,42,0.03)}
+  /* Responsive */
+  @media (max-width:820px){
+    .menu-btn{display:inline-block}
+    nav{display:none;position:fixed;right:12px;top:60px;background:rgba(255,255,255,0.98);flex-direction:column;padding:12px;border-radius:12px;box-shadow:var(--shadow)}
+    nav.open{display:flex}
+  }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">ZenYoTech</a>
-      <button id="menuToggle2" class="menu-toggle" aria-label="Toggle navigation">☰</button>
-      <nav id="mainNav2" class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="about.html">À propos</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+        <span class="leaf">🌿</span> Tech Zen Éco
+      </a>
+      <div>
+        <button id="menuBtn" class="menu-btn" aria-label="menu">☰</button>
+        <nav id="nav">
+          <a href="#a1">Haiku 4.5</a>
+          <a href="#a2">VaultGemma</a>
+          <a href="#a3">Méthodologie énergie</a>
+          <a href="#a4">Quantification low-bit</a>
+          <a href="#a5">Mixture-of-Experts</a>
+        </nav>
+      </div>
+    </header>
 
-  <main class="container">
-    <section class="card about-card">
-      <h1>À propos</h1>
-      <p class="lead">ZenYoTech propose une lecture claire et apaisée de l'actualité sur les grands modèles de langage et l'intelligence artificielle.</p>
-      <h2>Mission</h2>
-      <p>Offrir des résumés techniques accessibles, des analyses honnêtes et des pistes concrètes pour développeurs, chercheurs et décideurs intéressés par les LLM et l'IA.</p>
-      <h2>Approche</h2>
-      <p>Ton zen, design épuré, contenu axé sur la clarté et la lecture rapide. Priorité à la qualité des sources et à la mise en perspective.</p>
-    </section>
-  </main>
+    <main>
+      <h1>Progrès récents sur les LLM — analyses & perspective environnementale</h1>
+      <p class="lead">Jeune journaliste spécialisé en IA générative — synthèse critique de 5 avancées publiées au cours des trois derniers mois, analysées sous l'angle technique et écologique.</p>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <strong>ZenYoTech</strong></p>
-    </div>
-  </footer>
+      <section class="articles">
 
-  <script src="script.js"></script>
+        <!-- Article 1 -->
+        <article id="a1" class="card" aria-labelledby="a1title">
+          <h2 id="a1title"><a href="https://www.anthropic.com/news/claude-haiku-4-5" target="_blank" rel="noopener">Anthropic — Claude Haiku 4.5 : petite taille, grande utilité (15 oct. 2025)</a></h2>
+          <time datetime="2025-10-15">15 octobre 2025</time>
+          <div class="summary">
+            <strong>Résumé analytique (journalistique)</strong> — Anthropic a annoncé Haiku 4.5, un modèle « small » conçu pour concilier performances pratiques et coût d'exploitation réduit. Contrairement aux annonces purement marketing, Haiku 4.5 n'est pas seulement une version allégée ; l'équipe souligne un travail d'ingénierie qui optimise le throughput et la mémoire pour réduire la latence et le coût par requête. Concrètement cela signifie que pour des tâches très répandues — assistance en ligne, revue de code, synthèse documentaire — on peut désormais déployer un LLM avec une empreinte énergétique et financière nettement inférieure à celle d'un modèle large, sans perte notable d'utilité sur la plupart des cas d'usage courants.<br><br>
+
+            En tant que journaliste spécialiste, j'insiste sur trois points : (1) le passage à des modèles « right-sized » (taille adaptée à la tâche) permet des gains immédiats d'efficience opérationnelle — moins de FLOPs par token et moins de mémoire transférée signifie moins d'énergie consommée à l'inférence ; (2) l'impact réel dépend fortement de l'architecture du pipeline (cache, pré/post-traitement, routing vers modèles plus lourds) et du datacenter (PUE, mix électrique) ; (3) l'effet rebond possible : un modèle moins cher peut multiplier l'usage, annulant en partie les gains si la politique produit n'incite pas au rationnement raisonnable des requêtes. <br><br>
+
+            Pour les équipes durables, Haiku 4.5 est intéressant : il permet de tester une stratégie « frontale » où un modèle léger filtre et sert l'essentiel du trafic, avec escalade seulement pour les requêtes qui nécessitent plus de capacité. Sur le plan pratique, la priorité pour une évaluation indépendante est la mesure fine du Wh/req sur la pile complète — sans cela, les promesses de réduction restent conditionnelles. (Source : communiqué Anthropic & couverture presse). 
+          </div>
+          <div class="source">Source : Anthropic — <a href="https://www.anthropic.com/news/claude-haiku-4-5" target="_blank" rel="noopener">Introducing Claude Haiku 4.5</a> • reportage Reuters / Tom's Guide. :contentReference[oaicite:1]{index=1}</div>
+        </article>
+
+        <!-- Article 2 -->
+        <article id="a2" class="card" aria-labelledby="a2title">
+          <h2 id="a2title"><a href="https://research.google/blog/vaultgemma-the-worlds-most-capable-differentially-private-llm/" target="_blank" rel="noopener">Google Research — VaultGemma : LLM entraîné avec confidentialité différentielle (25 sept. 2025)</a></h2>
+          <time datetime="2025-09-25">25 septembre 2025</time>
+          <div class="summary">
+            <strong>Résumé analytique (journalistique)</strong> — VaultGemma est présenté comme une étape clé dans la conciliation entre utilité et confidentialité : un LLM entraîné avec garanties de differential privacy (DP) pour réduire la probabilité de régurgitation de données sensibles. Les avancées publiées accompagnent la démonstration technique : lois d'échelle pour estimer la perte de performance liée à la contrainte privée et points d'opération pragmatiques où le surcoût en calcul reste acceptable.<br><br>
+
+            L'angle écologique mérite attention : la DP introduit un surcoût de calcul pendant l'entraînement (per-exemple gradients, bruit additionnel) — ce n'est pas gratuit en terme d'énergie. Journalistiquement, il faut toujours peser cette dépense une fois (entraînement) face à un bénéfice opérationnel multiple (déploiement large sur des millions de requêtes). Si un modèle DP permet de centraliser des services qui sinon seraient fragmentés, le surcoût de formation peut s'amortir ; inversement, pour des usages à faible volume, l'empreinte reste à justifier. VaultGemma propose surtout des outils analytiques (scaling laws) permettant aux décideurs de chiffrer précisément ce compromis entre coût énergétique et réduction du risque de fuite de données.<br><br>
+
+            En conclusion, VaultGemma rapproche vie privée et adoption industrielle : la question pour les équipes techniques est désormais de quantifier l'empreinte entraînement vs bénéfice réglementaire et opérationnel. (Source : billet Google Research et comptes-rendus techniques).
+          </div>
+          <div class="source">Source : Google Research — <a href="https://research.google/blog/vaultgemma-the-worlds-most-capable-differentially-private-llm/" target="_blank" rel="noopener">VaultGemma</a> • articles de presse techniques. :contentReference[oaicite:2]{index=2}</div>
+        </article>
+
+        <!-- Article 3 -->
+        <article id="a3" class="card" aria-labelledby="a3title">
+          <h2 id="a3title"><a href="https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference/" target="_blank" rel="noopener">Google Cloud — Méthodologie pour mesurer l'impact environnemental de l'inférence (Août 2025)</a></h2>
+          <time datetime="2025-08-21">21 août 2025</time>
+          <div class="summary">
+            <strong>Résumé analytique (journalistique)</strong> — Google a publié une méthodologie claire et reproductible pour estimer énergie (Wh), émissions (gCO₂e) et eau consommée par prompt. Le document fournit des chiffres d'exemple (p. ex. ~0.24 Wh et ~0.03 gCO₂e par prompt median pour Gemini Apps) et, surtout, une procédure mesurable : mesurer la consommation côté serveur, la diviser par le débit, corriger selon le PUE et appliquer des facteurs d'intensité carbone régionale.<br><br>
+
+            Ce qui change pour les rédacteurs et les équipes produit : on passe d'estimations vagues à des métriques comparables. Cela rend possible la création de « KPI énergie » pour les fonctionnalités LLM (p. ex. budget Wh par mois), et ouvre la voie à décisions concrètes : limiter la longueur maximale de contexte sur certains flux, mettre en cache des réponses fréquentes, batcher des requêtes non urgentes, ou right-sizing automatique. Sur le plan journalistique, l'importance de cette publication est double : elle responsabilise les fournisseurs et fournit aux journalistes des repères pour évaluer les affirmations marketing sur l'efficience énergétique.<br><br>
+
+            En bref : mesurer devient la première étape du progrès écologique — sans chiffres fiables, les promesses restent de la communication. (Source : Google Cloud blog + PDF technique).
+          </div>
+          <div class="source">Source : Google Cloud — <a href="https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference/" target="_blank" rel="noopener">Measuring the environmental impact of AI inference</a>. :contentReference[oaicite:3]{index=3}</div>
+        </article>
+
+        <!-- Article 4 -->
+        <article id="a4" class="card" aria-labelledby="a4title">
+          <h2 id="a4title"><a href="https://arxiv.org/html/2510.06213v1" target="_blank" rel="noopener">Recherche — quantification low-bit & post-training (Oct. 2025)</a></h2>
+          <time datetime="2025-10-07">7 octobre 2025</time>
+          <div class="summary">
+            <strong>Résumé analytique (journalistique)</strong> — Une série de travaux récents (ACL / arXiv / NAACL) documente que la quantification agressive (3-bits, 4-bits) et les techniques de post-training (PTQ) deviennent réellement pratiques pour LLMs modernes lorsqu'elles sont accompagnées de calibrations fines, fine-tuning léger ou islands en haute précision. Ces avancées réduisent fortement la mémoire et la bande passante de mémoire — deux facteurs cruciaux pour l'énergie d'inférence — et permettent d'exécuter des modèles volumineux sur hardware plus modeste, parfois moins énergivore.<br><br>
+
+            Journalisticamente, la nouveauté n'est pas seulement algorithmique : c'est la maturité opérationnelle. Les nouvelles études montrent aussi des limites — certains modèles mal entraînés subissent une dégradation importante (QiD, quantization induced degradation). Les bonnes pratiques proposées (quantization-aware fine-tuning, per-channel scales, selective high-precision blocks) réduisent ces pertes et fournissent une feuille de route pour déployer des pipelines quantifiés en production. Pour l'impact écologique : la quantification permet souvent d'utiliser des accélérateurs plus efficaces et de réduire la charge de refroidissement en datacenter — effets qui se traduisent directement en Wh/req plus faibles.<br><br>
+
+            En pratique, les CTOs qui veulent réduire l'empreinte opérationnelle doivent instrumenter les dégradations de qualité et mesurer la réduction d'énergie sur leurs workflows réels ; la littérature fournit désormais des recettes reproductibles pour y parvenir. (Source : arXiv / ACL / NAACL).
+          </div>
+          <div class="source">Source : arXiv / ACL papers — <a href="https://arxiv.org/html/2510.06213v1" target="_blank" rel="noopener">Training dynamics impact post-training quantization</a> • ACL proceedings. :contentReference[oaicite:4]{index=4}</div>
+        </article>
+
+        <!-- Article 5 -->
+        <article id="a5" class="card" aria-labelledby="a5title">
+          <h2 id="a5title"><a href="https://friendli.ai/blog/moe-models-comparison" target="_blank" rel="noopener">Mixture-of-Experts (MoE) — architectures sparsely activées et efficience (août-sept. 2025)</a></h2>
+          <time datetime="2025-08-26">26 août 2025</time>
+          <div class="summary">
+            <strong>Résumé analytique (journalistique)</strong> — Les architectures MoE (Mixture-of-Experts) continuent d'être au centre des débats en 2025 : elles offrent une voie pour conserver une très grande capacité paramétrique tout en n'activant qu'une fraction des paramètres par requête. Les rapports comparatifs publiés récemment montrent qu'avec un bon routage et des optimisations systèmes (co-localisation d'experts, équilibrage de charge), l'énergie par requête peut chuter notablement par rapport à un modèle dense équivalemment performant.<br><br>
+
+            En tant que journaliste, j'observe un couple d'exigences opérationnelles : (1) MoE est très sensible aux patterns de requêtes — pour des services stables et à haut débit, l'amortissement est réel ; pour des interactions sporadiques, les overheads (latence, communication inter-serveurs) peuvent effacer les gains ; (2) l'écosystème logiciel et matériel s'adapte rapidement (nouvelles primitives pour exécuter du sparse more efficiently), ce qui rend MoE plus viable qu'il y a un an. Les analyses récentes fournissent benchmarks comparatifs et recommandations (gating loss, expert capacity limits) utiles aux ingénieurs.<br><br>
+
+            Conclusion rapide : MoE est une option crédible pour des déploiements à grande échelle qui ciblent l'efficience énergétique, mais elle nécessite un investissement engineering plus élevé pour maîtriser la latence et les coûts réseaux. (Source : analyses et blogs techniques).
+          </div>
+          <div class="source">Source : comparative analyses & blogs (friendli.ai, articles techniques sur MoE). :contentReference[oaicite:5]{index=5}</div>
+        </article>
+
+      </section>
+    </main>
+
+    <footer>
+      <p>© Tech Zen Éco — résumé journalistique & liens sources. Pour lire les sources originales, utilisez les liens dans chaque article.</p>
+    </footer>
+  </div>
+
+<script>
+  // menu responsive
+  document.getElementById('menuBtn').addEventListener('click', function(){
+    document.getElementById('nav').classList.toggle('open');
+  });
+  // smooth anchor behavior
+  document.querySelectorAll('nav a').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      document.getElementById('nav').classList.remove('open');
+    });
+  });
+</script>
 </body>
 </html>
