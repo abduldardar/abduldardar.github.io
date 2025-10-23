@@ -10,7 +10,7 @@ updateClock();
 
 async function loadArticles(selector='#articles-list'){
   try {
-    const resp = await fetch('/data/articles.json', {cache:'no-store'});
+    const resp = await fetch('./data/articles.json', {cache:'no-store'});
     if(!resp.ok) throw new Error('Impossible de charger les articles');
     const data = await resp.json();
     const container = document.querySelector(selector);
