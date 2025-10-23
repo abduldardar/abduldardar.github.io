@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Archives — On regarde de plus près : l’IA Générative</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="logo"><img src="/logo.svg" alt="logo"><nav><a href="/index.html">Accueil</a><a href="/archives.html">Archives</a><a href="/about.html">À propos</a><a href="/contact.html">Contact</a></nav></div>
+    <div class="time" id="clock">--</div>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Archives</h1>
+  <ul id="archives-list"></ul>
+  <script>
+  async function loadArchives(){
+    const resp = await fetch('/data/articles.json');
+    const data = await resp.json();
+    const ul = document.getElementById('archives-list');
+    data.articles.forEach(a=>{
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="/index.html#">${a.titre}</a> — ${a.date}`;
+      ul.appendChild(li);
+    });
+  }
+  document.addEventListener('DOMContentLoaded', loadArchives);
+  </script>
+</main>
+</body>
+</html>

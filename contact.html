@@ -1,50 +1,21 @@
 <!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact — ZenYoTech</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contact</title><link rel="stylesheet" href="/style.css"></head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">ZenYoTech</a>
-      <button id="menuToggle3" class="menu-toggle" aria-label="Toggle navigation">☰</button>
-      <nav id="mainNav3" class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="about.html">À propos</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="card contact-card">
-      <h1>Contact</h1>
-      <p class="lead">Une question, une proposition de collaboration ou un retour ? Écrivez-nous.</p>
-
-      <form class="contact-form" action="#" method="post" onsubmit="alert('Formulaire de démonstration — Configurez un endpoint serveur pour envoyer les messages.'); return false;">
-        <label for="name">Nom</label>
-        <input id="name" name="name" type="text" required />
-
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required />
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="6" required></textarea>
-
-        <button type="submit" class="btn">Envoyer</button>
-      </form>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <strong>ZenYoTech</strong></p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+<header>
+  <div class="header-inner">
+    <div class="logo"><img src="/logo.svg" alt="logo"><nav><a href="/index.html">Accueil</a><a href="/archives.html">Archives</a><a href="/about.html">À propos</a><a href="/contact.html">Contact</a></nav></div>
+    <div class="time" id="clock">--</div>
+  </div>
+</header>
+<main class="container">
+  <h1>Contact</h1>
+  <form id="contact-form" method="post" action="#" onsubmit="alert('Formulaire fictif — configurez un backend pour le traitement'); return false;">
+    <label>Nom<br><input name="name" required></label><br><br>
+    <label>E-mail<br><input name="email" type="email" required></label><br><br>
+    <label>Message<br><textarea name="message" rows="6" required></textarea></label><br><br>
+    <button type="submit">Envoyer</button>
+  </form>
+</main>
 </body>
 </html>
