@@ -1,27 +1,161 @@
-:root{
-  --maxw:900px;
-  --bg:#fbfcfd;
-  --muted:#6b7280;
-  --accent:#0f172a;
-  --card:#ffffff;
+/* ================================
+   STYLE GLOBAL — On regarde de plus près
+   ================================ */
+
+:root {
+  --fond: #f7f9fc;
+  --verre: rgba(255, 255, 255, 0.7);
+  --bord: rgba(200, 210, 230, 0.4);
+  --accent: #6b9dfc;
+  --texte: #1e293b;
+  --ombre: 0 8px 20px rgba(15, 23, 42, 0.08);
+  --rayon: 20px;
+  --transition: all 0.3s ease;
 }
-*{box-sizing:border-box}
-body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--accent); margin:0; padding:0; -webkit-font-smoothing:antialiased}
-.container{max-width:var(--maxw); margin:48px auto; padding:24px}
-header{position:fixed; top:0; left:0; right:0; background:rgba(255,255,255,0.6); backdrop-filter:blur(6px); border-bottom:1px solid rgba(15,23,42,0.04); z-index:50}
-.header-inner{max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:12px 24px}
-.logo{display:flex; align-items:center; gap:12px}
-.logo img{height:36px}
-nav a{margin:0 10px; text-decoration:none; color:var(--accent); font-weight:600}
-.time{font-size:14px; color:var(--muted)}
-.hero{margin-top:84px; padding:28px 24px; background:var(--card); border-radius:12px; box-shadow:0 6px 18px rgba(15,23,42,0.04)}
-.article{margin-top:18px; padding:18px; background:var(--card); border-radius:10px; display:flex; gap:18px}
-.article img{width:220px; height:140px; object-fit:cover; border-radius:8px; flex-shrink:0}
-.meta{font-size:13px; color:var(--muted); margin-bottom:8px}
-.aside-date{min-width:88px; text-align:center; background:linear-gradient(180deg,#f8fafc,#ffffff); border-radius:8px; padding:8px; font-weight:700; color:var(--accent)}
-.footer{margin:28px 0; color:var(--muted); font-size:14px}
-@media(max-width:880px){
-  .article{flex-direction:column}
-  .article img{width:100%; height:auto}
-  .header-inner{padding:8px 16px}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: var(--texte);
+  background: var(--fond);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ================================
+   HEADER FIXE
+   ================================ */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--verre);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--bord);
+  box-shadow: var(--ombre);
+  z-index: 1000;
+}
+
+nav {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--texte);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* Horloge / date */
+#date-heure {
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+/* ================================
+   CONTENU PRINCIPAL
+   ================================ */
+
+main {
+  max-width: 1000px;
+  margin: 8rem auto 4rem;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* ================================
+   CARTES D’ARTICLES
+   ================================ */
+
+article {
+  background: var(--verre);
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon);
+  overflow: hidden;
+  box-shadow: var(--ombre);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+article:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+article img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+article h2 {
+  font-size: 1.2rem;
+  margin: 1rem 1rem 0.5rem;
+  color: var(--texte);
+}
+
+article .date {
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin: 0 1rem 0.5rem;
+}
+
+article p {
+  font-size: 0.95rem;
+  margin: 0 1rem 1rem;
+  opacity: 0.9;
+}
+
+/* ================================
+   PIED DE PAGE
+   ================================ */
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: rgba(30,41,59,0.6);
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 700px) {
+  nav ul {
+    gap: 1rem;
+  }
+  main {
+    margin-top: 7rem;
+    grid-template-columns: 1fr;
+  }
+  article img {
+    height: 180px;
+  }
 }
