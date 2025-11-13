@@ -43,7 +43,7 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2023 ZenYoTech - Tous droits réservés</p>
+            <p>&copy; 2025 ZenYoTech - Tous droits réservés</p>
             <p>Site dédié à l'actualité de l'IA générative</p>
         </div>
     </footer>
@@ -52,7 +52,7 @@
         // Chargement des archives
         async function loadArchives() {
             try {
-                const response = await fetch('./data/articles.json');
+                const response = await fetch('./data/articles_arch.json');
                 if (!response.ok) {
                     throw new Error('Erreur lors du chargement des archives');
                 }
@@ -139,4 +139,5 @@
         });
     </script>
 </body>
+
 </html>
