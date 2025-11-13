@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archives | On regarde de plus près : l'IA Générative</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="logo.svg" alt="ZenYoTech - IA Générative">
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="archives.html" class="nav-link active">Archives</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">À propos</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="datetime-display">
+                    <span id="current-datetime"></span>
+                </div>
+                <div class="theme-toggle">
+                    <button id="theme-switcher">🌙</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>Archives des articles</h1>
+            <p>Retrouvez tous nos articles précédents sur l'IA générative</p>
+        </section>
+
+        <section class="archives-list" id="archives-container">
+            <!-- Les archives seront chargées ici par JavaScript -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 ZenYoTech - Tous droits réservés</p>
+            <p>Site dédié à l'actualité de l'IA générative</p>
+        </div>
+    </footer>
+
+    <script>
+        // Chargement des archives
+        async function loadArchives() {
+            try {
+                const response = await fetch('./data/articles.json');
+                if (!response.ok) {
+                    throw new Error('Erreur lors du chargement des archives');
+                }
+                
+                const data = await response.json();
+                displayArchives(data.articles);
+            } catch (error) {
+                console.error('Erreur:', error);
+                document.getElementById('archives-container').innerHTML = '<p>Impossible de charger les archives. Veuillez réessayer plus tard.</p>';
+            }
+        }
+
+        // Affichage des archives
+        function displayArchives(articles) {
+            const container = document.getElementById('archives-container');
+            
+            if (!articles || articles.length === 0) {
+                container.innerHTML = '<p>Aucun article dans les archives pour le moment.</p>';
+                return;
+            }
+            
+            // Trier les articles par date (du plus récent au plus ancien)
+            articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            let html = '';
+            
+            articles.forEach(article => {
+                const date = new Date(article.date).toLocaleDateString('fr-FR');
+                
+                html += `
+                    <div class="archive-item">
+                        <a href="${article.lien_source}" target="_blank">
+                            <span class="archive-title">${article.titre}</span>
+                            <span class="archive-date">${date}</span>
+                        </a>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Charger les archives au chargement de la page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadArchives();
+            
+            // Gestion du thème clair/sombre
+            const themeSwitcher = document.getElementById('theme-switcher');
+            const currentTheme = localStorage.getItem('theme') || 'light';
+
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            updateThemeButton(currentTheme);
+
+            themeSwitcher.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeButton(newTheme);
+            });
+
+            function updateThemeButton(theme) {
+                themeSwitcher.textContent = theme === 'light' ? '🌙' : '☀️';
+            }
+
+            // Affichage de la date et heure
+            function updateDateTime() {
+                const now = new Date();
+                const options = { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                };
+                const dateTimeString = now.toLocaleDateString('fr-FR', options);
+                document.getElementById('current-datetime').textContent = dateTimeString;
+            }
+
+            updateDateTime();
+            setInterval(updateDateTime, 60000);
+        });
+    </script>
+</body>
+</html>

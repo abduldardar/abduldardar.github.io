@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | On regarde de plus près : l'IA Générative</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="logo.svg" alt="ZenYoTech - IA Générative">
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="archives.html" class="nav-link">Archives</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">À propos</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
+                </ul>
+                <div class="datetime-display">
+                    <span id="current-datetime"></span>
+                </div>
+                <div class="theme-toggle">
+                    <button id="theme-switcher">🌙</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>Contactez-nous</h1>
+            <p>Nous sommes à votre écoute pour toute question ou suggestion</p>
+        </section>
+
+        <section class="contact-content">
+            <div class="contact-form-container">
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Adresse e-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Envoyer le message</button>
+                </form>
+            </div>
+            
+            <div class="contact-info" style="margin-top: 40px;">
+                <h2>Autres moyens de nous contacter</h2>
+                <p>Vous pouvez également nous joindre par e-mail à l'adresse : <strong>contact@zenyotech.org</strong></p>
+                <p>Ou suivre nos actualités sur nos réseaux sociaux :</p>
+                <ul>
+                    <li>Twitter : @ZenYoTech_IA</li>
+                    <li>LinkedIn : ZenYoTech Association</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 ZenYoTech - Tous droits réservés</p>
+            <p>Site dédié à l'actualité de l'IA générative</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
