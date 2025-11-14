@@ -3,6 +3,59 @@
     {
       "titre": "OpenAI lance GPT‑5.1 : vers un assistant plus conversationnel et personnalisable",
       "date": "2025-11-13",
+      "resume": "OpenAI a annoncé la mise à jour GPT‑5.1...",
+      "lien_source": "https://openai.com/index/gpt-5-1/",
+      "url_image": "https://images.pexels.com/photos/843891/pexels-photo-843891.jpeg"
+    },
+    {
+      "titre": "Anthropic livre Claude Haiku 4.5 et étend Claude dans Xcode",
+      "date": "2025-10-15",
+      "resume": "Anthropic a publié Claude Haiku 4.5...",
+      "lien_source": "https://www.anthropic.com/news/claude-haiku-4-5",
+      "url_image": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg"
+    },
+    {
+      "titre": "Mistral publie des mises à jour de sa gamme : Mistral Small 3.2 et avancées multimodales",
+      "date": "2025-06-10",
+      "resume": "La jeune licorne européenne Mistral poursuit...",
+      "lien_source": "https://docs.mistral.ai/getting-started/models",
+      "url_image": "https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg"
+    },
+    {
+      "titre": "DeepMind/Google annonce une nouvelle génération de modèles multimédia",
+      "date": "2025-05-20",
+      "resume": "Google/DeepMind a dévoilé une série de modèles...",
+      "lien_source": "https://blog.google/technology/ai/generative-media-models-io-2025/",
+      "url_image": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg"
+    },
+    {
+      "titre": "Meta ouvre l’accès de Llama à des alliés stratégiques",
+      "date": "2025-09-23",
+      "resume": "Meta a annoncé des accords visant à rendre les modèles Llama disponibles...",
+      "lien_source": "https://www.reuters.com/business/retail-consumer/metas-llama-be-made-available-us-allies-europe-asia-2025-09-23/",
+      "url_image": "https://images.pexels.com/photos/586132/pexels-photo-586132.jpeg"
+    },
+    {
+      "titre": "Hugging Face entre dans la robotique : Reachy Mini arrive",
+      "date": "2025-07-11",
+      "resume": "Après l’acquisition de Pollen Robotics...",
+      "lien_source": "https://www.therobotreport.com/hugging-face-launches-reachy-mini-robot-as-embodied-ai-platform/",
+      "url_image": "https://images.pexels.com/photos/595804/pexels-photo-595804.jpeg"
+    },
+    {
+      "titre": "DeepSeek reporte R2 : retards et spéculations",
+      "date": "2025-08-14",
+      "resume": "DeepSeek a démenti les rumeurs sur la sortie de R2...",
+      "lien_source": "https://technode.com/2025/08/14/deepseek-denies-rumors-of-august-launch-for-r2-ai-model/",
+      "url_image": "https://images.pexels.com/photos/3184312/pexels-photo-3184312.jpeg"
+    }
+  ]
+}
+{
+  "articles": [
+    {
+      "titre": "OpenAI lance GPT‑5.1 : vers un assistant plus conversationnel et personnalisable",
+      "date": "2025-11-13",
       "resume": "OpenAI a annoncé la mise à jour GPT‑5.1, une itération du modèle GPT‑5 destinée à améliorer la fluidité conversationnelle, la compréhension contextuelle et la personnalisation pour les utilisateurs payants. Selon le communiqué officiel, la version 5.1 affine la gestion des dialogues prolongés, réduit les erreurs factuelles sur des requêtes complexes et introduit des outils dédiés à la personnalisation des comportements (tuning de ton, préférences de sortie et contrôle de style) sans nécessiter d’entraînement complet. Sur le plan technique, GPT‑5.1 apporte des optimisations d’efficacité d’inférence — permettant des réponses plus rapides dans les environnements à latence réduite — et simplifie l’intégration des développeurs via des paramètres de configuration plus granulaires. OpenAI met l’accent sur l’équilibre entre performance et sécurité : des contrôles de modération actualisés et des garde‑fous améliorés pour limiter les sorties nuisibles ou les hallucinations ont été déployés en parallèle.\n\nPour les entreprises, la promesse est double : meilleure qualité de service pour les agents conversationnels et interfaces personnalisées plus faciles à déployer. Les premiers retours des testeurs internes mentionnent une amélioration notable dans les tâches de synthèse longue et dans les workflows de programmation assistée. OpenAI précise que le déploiement commence aujourd’hui pour les utilisateurs payants et s’étendra progressivement.\n\nImpact attendu : cette version va probablement accélérer l’adoption des assistants personnalisés dans les produits SaaS et renforcer la compétition sur l’expérience conversationnelle entre acteurs majeurs du secteur.",
       "lien_source": "https://openai.com/index/gpt-5-1/",
       "url_image": "https://unsplash.com/photos/vrGWIhSxgSU"
