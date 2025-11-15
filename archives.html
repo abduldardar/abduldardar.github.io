@@ -33,11 +33,21 @@
     <main class="container">
         <section class="page-header">
             <h1>Archives des articles</h1>
-            <p>Retrouvez tous nos articles précédents sur l'IA générative</p>
+            <p>Découvrez une sélection aléatoire d'articles sur l'IA générative</p>
+            <button id="shuffle-articles" class="shuffle-btn">Mélanger les articles</button>
         </section>
 
-        <section class="archives-list" id="archives-container">
-            <!-- Les archives seront chargées ici par JavaScript -->
+        <section class="featured-articles">
+            <div id="random-articles-container" class="articles-grid">
+                <!-- Les articles aléatoires seront chargés ici -->
+            </div>
+        </section>
+
+        <section class="all-archives">
+            <h2>Tous les articles archivés</h2>
+            <div id="all-archives-container" class="archives-list">
+                <!-- Tous les articles seront listés ici -->
+            </div>
         </section>
     </main>
 
@@ -49,37 +59,150 @@
     </footer>
 
     <script>
-        // Chargement des archives
-        async function loadArchives() {
+        // Gestion du thème clair/sombre
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateThemeButton(currentTheme);
+
+        themeSwitcher.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeButton(newTheme);
+        });
+
+        function updateThemeButton(theme) {
+            themeSwitcher.textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        // Affichage de la date et heure
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            const dateTimeString = now.toLocaleDateString('fr-FR', options);
+            document.getElementById('current-datetime').textContent = dateTimeString;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
+
+        // Chargement de tous les fichiers articles
+        async function loadAllArticles() {
             try {
-                const response = await fetch('./data/articles_arch.json');
-                if (!response.ok) {
-                    throw new Error('Erreur lors du chargement des archives');
+                // Liste des fichiers articles à charger
+                const articleFiles = [
+                    './data/articles.json',
+                    './data/articles_2024_11.json',
+                    './data/articles_2024_12.json',
+                    './data/articles_2025_01.json',
+                    './data/articles_2025_02.json'
+                    // Ajoutez ici les nouveaux fichiers au fur et à mesure
+                ];
+
+                let allArticles = [];
+
+                // Charger tous les fichiers
+                for (const file of articleFiles) {
+                    try {
+                        const response = await fetch(file);
+                        if (response.ok) {
+                            const data = await response.json();
+                            if (data.articles && Array.isArray(data.articles)) {
+                                allArticles = allArticles.concat(data.articles);
+                                console.log(`Fichier ${file} chargé: ${data.articles.length} articles`);
+                            }
+                        }
+                    } catch (error) {
+                        console.warn(`Impossible de charger le fichier ${file}:`, error);
+                    }
                 }
-                
-                const data = await response.json();
-                displayArchives(data.articles);
+
+                if (allArticles.length === 0) {
+                    throw new Error('Aucun article trouvé dans les fichiers');
+                }
+
+                console.log(`Total des articles chargés: ${allArticles.length}`);
+                return allArticles;
+
             } catch (error) {
-                console.error('Erreur:', error);
-                document.getElementById('archives-container').innerHTML = '<p>Impossible de charger les archives. Veuillez réessayer plus tard.</p>';
+                console.error('Erreur lors du chargement des articles:', error);
+                throw error;
             }
         }
 
-        // Affichage des archives
-        function displayArchives(articles) {
-            const container = document.getElementById('archives-container');
+        // Sélectionner 10 articles aléatoires
+        function getRandomArticles(articles, count = 10) {
+            if (articles.length <= count) {
+                return [...articles].sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
             
-            if (!articles || articles.length === 0) {
+            // Mélanger le tableau et prendre les premiers 'count' éléments
+            const shuffled = [...articles].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count).sort((a, b) => new Date(b.date) - new Date(a.date));
+        }
+
+        // Afficher les articles aléatoires
+        function displayRandomArticles(articles) {
+            const container = document.getElementById('random-articles-container');
+            const randomArticles = getRandomArticles(articles, 10);
+            
+            if (randomArticles.length === 0) {
+                container.innerHTML = '<p>Aucun article disponible pour le moment.</p>';
+                return;
+            }
+
+            let html = '';
+            
+            randomArticles.forEach(article => {
+                const imageUrl = article.url_image || './images/default-tech.jpg';
+                
+                html += `
+                    <article class="article-card">
+                        <div class="article-image-container">
+                            <img src="${imageUrl}" alt="${article.titre}" class="article-image" onerror="this.src='./images/default-tech.jpg'">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-date">${formatDate(article.date)}</span>
+                                <span class="article-source">${getSourceName(article.lien_source)}</span>
+                            </div>
+                            <h3 class="article-title">${article.titre}</h3>
+                            <p class="article-summary">${article.resume}</p>
+                            <a href="${article.lien_source}" target="_blank" class="article-link">Lire la source</a>
+                        </div>
+                    </article>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Afficher tous les articles sous forme de liste
+        function displayAllArticles(articles) {
+            const container = document.getElementById('all-archives-container');
+            
+            // Trier par date décroissante
+            const sortedArticles = [...articles].sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            if (sortedArticles.length === 0) {
                 container.innerHTML = '<p>Aucun article dans les archives pour le moment.</p>';
                 return;
             }
-            
-            // Trier les articles par date (du plus récent au plus ancien)
-            articles.sort((a, b) => new Date(b.date) - new Date(a.date));
-            
+
             let html = '';
             
-            articles.forEach(article => {
+            sortedArticles.forEach(article => {
                 const date = new Date(article.date).toLocaleDateString('fr-FR');
                 
                 html += `
@@ -95,49 +218,90 @@
             container.innerHTML = html;
         }
 
-        // Charger les archives au chargement de la page
-        document.addEventListener('DOMContentLoaded', () => {
-            loadArchives();
-            
-            // Gestion du thème clair/sombre
-            const themeSwitcher = document.getElementById('theme-switcher');
-            const currentTheme = localStorage.getItem('theme') || 'light';
+        // Formatage de la date
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('fr-FR', options);
+        }
 
-            document.documentElement.setAttribute('data-theme', currentTheme);
-            updateThemeButton(currentTheme);
+        // Extraction du nom de la source
+        function getSourceName(url) {
+            try {
+                const domain = new URL(url).hostname;
+                return domain.replace('www.', '').split('.')[0];
+            } catch (e) {
+                return 'Source';
+            }
+        }
 
-            themeSwitcher.addEventListener('click', () => {
-                const currentTheme = document.documentElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateThemeButton(newTheme);
+        // Gestion du bouton "Mélanger"
+        function setupShuffleButton(allArticles) {
+            const shuffleBtn = document.getElementById('shuffle-articles');
+            shuffleBtn.addEventListener('click', () => {
+                displayRandomArticles(allArticles);
+                // Animation de feedback
+                shuffleBtn.textContent = 'Articles mélangés !';
+                setTimeout(() => {
+                    shuffleBtn.textContent = 'Mélanger les articles';
+                }, 2000);
             });
+        }
 
-            function updateThemeButton(theme) {
-                themeSwitcher.textContent = theme === 'light' ? '🌙' : '☀️';
+        // Chargement initial
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const allArticles = await loadAllArticles();
+                displayRandomArticles(allArticles);
+                displayAllArticles(allArticles);
+                setupShuffleButton(allArticles);
+            } catch (error) {
+                console.error('Erreur:', error);
+                document.getElementById('random-articles-container').innerHTML = 
+                    '<p>Impossible de charger les articles. Veuillez réessayer plus tard.</p>';
+                document.getElementById('all-archives-container').innerHTML = 
+                    '<p>Impossible de charger les archives.</p>';
             }
-
-            // Affichage de la date et heure
-            function updateDateTime() {
-                const now = new Date();
-                const options = { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                };
-                const dateTimeString = now.toLocaleDateString('fr-FR', options);
-                document.getElementById('current-datetime').textContent = dateTimeString;
-            }
-
-            updateDateTime();
-            setInterval(updateDateTime, 60000);
         });
     </script>
-</body>
 
+    <style>
+        .shuffle-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-top: 15px;
+        }
+
+        .shuffle-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .all-archives {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .all-archives h2 {
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        @media (max-width: 767px) {
+            .shuffle-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</body>
 </html>
