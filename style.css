@@ -150,7 +150,7 @@ body {
 }
 
 .articles-grid {
-    display: flex;
+    display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
 }
@@ -402,3 +402,4 @@ footer {
     }
 
 }
+
