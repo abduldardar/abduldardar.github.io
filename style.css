@@ -150,7 +150,7 @@ body {
 }
 
 .articles-grid {
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr;
     gap: 30px;
 }
@@ -400,4 +400,5 @@ footer {
     .hero h1 {
         font-size: 2rem;
     }
+
 }
